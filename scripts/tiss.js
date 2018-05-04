@@ -2,7 +2,7 @@ function setDetails(id) {
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',
-		url: 'tiss_details.php',
+		url: 'scripts/tiss_details.php',
 		data: { "id" : id },
 		success: function(result) {
 			$("#inputTitle").val(result.title[0]);

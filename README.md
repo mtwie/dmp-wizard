@@ -1,2 +1,2 @@
 # dmp-wizard
-Creates Data Management Plans (digital-prevervation uni course)
+Simple data management plan creation (digital-prevervation uni course)

@@ -11,7 +11,7 @@ $('#formBasic').on('submit', function (e) {
 	$.ajax({
 		type: 'GET',
 		dataType: 'json',
-		url: 'tiss_search.php',
+		url: 'scripts/tiss_search.php',
 		data: { "name" : $("#inputName").val() },
 		success: function(result) {
 			authorDetails(result);
@@ -61,7 +61,7 @@ $("#inputUpload").on('change', function() {
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
-			url: 'file_analyze.php',
+			url: 'scripts/file_analyze.php',
 			data: formdata,
 			processData: false,
 			contentType: false,
