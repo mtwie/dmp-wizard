@@ -1,0 +1,17 @@
+body {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.container{
+    width: 960px;
+}
+
+.no-r-gutter > [class*='col-'] {
+    padding-right:0;
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+
+		<title>DMP - Wizard</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="external/bootstrap.min.css" />
+
+		<!-- Custom styles -->
+		<link rel="stylesheet" href="style/style.css" />
+	</head>
+
+	<body>
+		<div class="container">
+
+			<h1>DMP - Wizard</h1>
+			<blockquote class="blockquote">
+				<p class="mb-0">Simple data management plan creation</p>
+				<footer class="blockquote-footer">by Majed Abu Zant and Matthias Wiedhalm</footer>
+			</blockquote>
+
+			<button id="buttonStart" class="btn btn-dark">Start Wizard</button>
+			<hr />
+			<div id="projectBasics" class="shadow p-3 mb-5 bg-white rounded">
+				<h3>1. Project basics</h3>
+
+				<form id="formBasic" class="collapse hide">
+					<div class="form-group w-50">
+						<label for="inputName">Author name</label>
+						<input type="text" class="form-control" id="inputName" required />
+					</div>
+
+					<div class="form-group w-50">
+						<label for="inputProject">Project name</label>
+						<input type="text" class="form-control" id="inputProject" required />
+					</div>
+
+					<div class="row no-r-gutter">
+						<div class="col-md-auto">
+							<button type="submit" id="submitBasic" class="btn btn-primary" aria-describedby="queryInfo">Next Step</button>
+						</div>
+						<div class="col-md-auto">
+							<img src="loading.gif" id="loadingAuthor" style="display:none" />
+						</div>
+					</div>
+					<small id="queryInfo" class="form-text text-muted">Queries TISS for author details.</small>
+				</form>
+			</div>
+			<div id="authorInfo" class="shadow p-3 mb-5 bg-white rounded">
+				<h3>2. Author details</h3>
+
+				<form id="formAuthor" class="collapse hide">					
+					<div class="form-group w-50">
+						<label for="inputTitle">Title</label>
+						<input type="text" class="form-control" id="inputTitle" />
+					</div>
+					<div class="form-group w-50">
+						<label for="inputFirstName">First name</label>
+						<input type="text" class="form-control" id="inputFirstName" placeholder="First name" required />
+					</div>
+					<div class="form-group w-50">
+						<label for="inputLastName">Last name</label>
+						<input type="text" class="form-control" id="inputLastName" placeholder="Last name" required />
+					</div>
+					<div class="form-group w-50">
+						<label for="inputEmail">Email address</label>
+						<input type="email" class="form-control" id="inputEmail" placeholder="Email adress" />
+					</div>
+					<div class="form-group w-75">
+						<label for="inputInstitute">Institute</label>
+						<input type="text" class="form-control" id="inputInstitute" placeholder="Institute" />
+					</div>
+					<button type="submit" class="btn btn-primary">Next Step</button>
+				</form>
+			</div>
+
+			<div id="data" class="shadow p-3 mb-5 bg-white rounded">
+				<h3>3. Data</h3>
+				<form id="formData" class="form-horizontal collapse hide">
+					<p>Upload files or add them manually</p>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-auto">
+								<label id="uploadButton" class="btn btn-success">
+									Upload&hellip;
+									<input id="inputUpload" type="file" style="display: none;" multiple="true" />
+								</label>
+							</div>
+							<div class="col-md-auto">
+								<button id="buttonAddManually" class="btn">Add manually</button>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="row no-r-gutter">
+						<div class="col-md-3">
+							<label>File name</label>
+						</div>
+						<div class="col-md-3">
+							<label>Type</label>
+						</div>
+						<div class="col-md-2">
+							<label>Size</label>
+						</div>
+						<div class="col-md-1">
+							<label>Count</label>
+						</div>
+						<div class="col-md-2">
+							<label>Use</label>
+						</div>
+					</div>
+					<div id="dynamicFiles">
+						<!-- Dynamic file elements -->
+					</div>
+					<hr>
+					<button type="submit" class="btn btn-primary">Next Step</button>
+				</form>
+			</div>
+
+			<div id="repository" class="shadow p-3 mb-5 bg-white rounded">
+				<h3>4. Repository</h3>
+				
+			</div>
+			
+			<div class="shadow p-3 mb-5 bg-white rounded">
+				<h3>5. License</h3>
+				<form id="formRepository" >
+					<p>Select a license for you project</p>
+					<div class="form-group">
+						<div class="row no-r-gutter">
+							<div class="col-md-auto">
+								<a id="buttonSelectLicense" class="btn btn-success" href="#!">Open Selector</a>
+							</div>
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="license" placeholder="&hellip;" readonly required />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Next Step</button>
+					</div>
+				</form>
+			</div>
+			
+			<div class="shadow p-3 mb-5 bg-white rounded">
+				<h3>6. Overview</h3>
+
+			</div>
+			
+			<!-- Select name modal -->
+			<div class="modal fade" id="selectNameModal" tabindex="-1" role="dialog" aria-labelledby="selectNameModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="selectNameModalLabel">Select record</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="selectName">TISS has multiple records (only first 15 are shown).\nPlease choose:</label>
+								<select class="form-control" id="selectName"></select>
+							</div> 
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button id="buttonSelectName" type="button" class="btn btn-primary">Select</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Hidden dynamic file template -->
+			<div class="form-group dynamic-element" style="display:none">
+				<div class="row no-r-gutter">
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="fileName" name="fileName[]" required />
+					</div>
+					<div class="col-md-3">
+						<input type="text" class="form-control" id="fileMime" name="fileMime[]" required />
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="form-control" id="fileSize" name="fileSize[]" required />
+					</div>
+					<div class="col-md-1">
+						<input type="number" min="1" class="form-control" id="fileCount" name="fileCount[]" required />
+					</div>
+					<div class="col-md-2">
+						<select id="fileUse" name="fileUse[]" class="form-control">
+							<option value="input">input</option>
+							<option value="output">output</option>
+						</select>
+					</div>
+					<!-- Delete Button-->
+					<div class="col-md-auto">
+						<button class="btn btn-danger file-delete">X</button>
+					</div>
+				</div>
+			</div>
+
+		<!-- JS scripts -->
+		<script src="external/jquery.min.js"></script>
+		<script src="external/bootstrap.min.js"></script>
+		<script src="scripts/tiss.js"></script>
+		<script src="scripts/events.js"></script>
+	</body>
+</html>
