@@ -10,7 +10,13 @@
 		<title>DMP - Wizard</title>
 
 		<!-- Bootstrap core CSS -->
-		<link rel="stylesheet" href="external/bootstrap.min.css" />
+		<link rel="stylesheet" href="external/bootstrap-4.1.1.min.css" />
+		
+		<!-- Bootstrap Select Addon CSS -->
+		<link rel="stylesheet" href="external/bootstrap-select-1.13.1.min.css" />
+		
+		<!-- License selector CSS -->
+		<link rel="stylesheet" href="external/license-selector-0.0.6.css">
 
 		<!-- Custom styles -->
 		<link rel="stylesheet" href="style/style.css" />
@@ -37,7 +43,7 @@
 					</div>
 
 					<div class="form-group w-50">
-						<label for="inputProject">Project name</label>
+						<label for="inputProject">Project title</label>
 						<input type="text" class="form-control" id="inputProject" required />
 					</div>
 
@@ -124,33 +130,62 @@
 			</div>
 
 			<div id="repository" class="shadow p-3 mb-5 bg-white rounded">
-				<h3>4. Repository</h3>
-				
+				<h3>4. Repository</h3>				
+				<form id="formRepository" class="form-horizontal collapse hide">
+					<p>Please select a country</p>
+					<div class="form-group row no-r-gutter">
+						<div class="col-md-auto">
+							<select id="countrySelector" class="selectpicker countrypicker" data-default="Austria"></select>
+						</div>
+						<div class="col-md-auto">
+							<button id="buttonSearchRepo" class="btn btn-success">Search OpenDOAR</button>
+						</div>
+						<div class="col-md-auto">
+							<img src="loading.gif" id="loadingRepos" style="display:none" />
+						</div>
+					</div>
+					<div id="repoResults" class="collapse hide">
+						<hr />
+						<p>Found suitable repositories:</p>
+						<div class="form-group row">
+							<div id="repoPicker" class="col-auto"></div>
+						</div>
+						<button type="submit" class="btn btn-primary">Next Step</button>
+					</div>
+                </form>
 			</div>
 			
-			<div class="shadow p-3 mb-5 bg-white rounded">
+			<div id="license" class="shadow p-3 mb-5 bg-white rounded">
 				<h3>5. License</h3>
-				<form id="formRepository" >
+				<form id="formLicense"  class="form-horizontal collapse hide">
 					<p>Select a license for you project</p>
 					<div class="form-group">
 						<div class="row no-r-gutter">
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="licenseField" placeholder="&hellip;" readonly required />
+							</div>
 							<div class="col-md-auto">
 								<a id="buttonSelectLicense" class="btn btn-success" href="#!">Open Selector</a>
-							</div>
-							<div class="col-md-8">
-								<input type="text" class="form-control" id="license" placeholder="&hellip;" readonly required />
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary">Next Step</button>
+						<button type="submit" class="btn btn-primary">Finish</button>
 					</div>
 				</form>
 			</div>
 			
-			<div class="shadow p-3 mb-5 bg-white rounded">
+			<div id="overview" class="shadow p-3 mb-5 bg-white rounded">
 				<h3>6. Overview</h3>
-
+				<div id="overviewField" class="collapse hide">
+				<p>Congratulation you finished the wizard, here are your results:</p>
+				<dl id="finishedPlan"></dl>
+				<hr />
+				<p><strong>JSON representation</strong></p>
+				<pre><code id="finishedJSON"></code></pre>
+				<button onClick="window.location.reload()" class="btn btn-dark">New Session</button>
+				</div>
+				
 			</div>
 			
 			<!-- Select name modal -->
@@ -205,10 +240,17 @@
 				</div>
 			</div>
 
+		<!-- Dependencies -->
+		<script type="text/javascript" src="external/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="external/lodash-3.10.1.min.js"></script>
+		<script type="text/javascript" src="external/bootstrap.bundle-4.1.1.min.js"></script>
+		<script type="text/javascript" src="external/bootstrap-select-1.13.1.min.js"></script>
+		<script type="text/javascript" src="external/countrypicker.min.js"></script>
+		<script type="text/javascript" src="external/license-selector-0.0.6.js"></script>
+		
 		<!-- JS scripts -->
-		<script src="external/jquery.min.js"></script>
-		<script src="external/bootstrap.min.js"></script>
-		<script src="scripts/tiss.js"></script>
-		<script src="scripts/events.js"></script>
+		<script type="text/javascript" src="scripts/tiss.js"></script>
+		<script type="text/javascript" src="scripts/repository.js"></script>
+		<script type="text/javascript" src="scripts/events.js"></script>
 	</body>
 </html>

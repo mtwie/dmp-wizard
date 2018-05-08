@@ -3,7 +3,7 @@ function setDetails(id) {
 		type: 'GET',
 		dataType: 'json',
 		url: 'scripts/tiss_details.php',
-		data: { "id" : id },
+		data: { id : id },
 		success: function(result) {
 			$("#inputTitle").val(result.title[0]);
 			$("#inputFirstName").val(result.firstname[0]);
