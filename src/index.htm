@@ -60,7 +60,6 @@
 			</div>
 			<div id="authorInfo" class="shadow p-3 mb-5 bg-white rounded">
 				<h3>2. Author details</h3>
-
 				<form id="formAuthor" class="collapse hide">					
 					<div class="form-group w-50">
 						<label for="inputTitle">Title</label>
@@ -89,7 +88,7 @@
 			<div id="data" class="shadow p-3 mb-5 bg-white rounded">
 				<h3>3. Data</h3>
 				<form id="formData" class="form-horizontal collapse hide">
-					<p>Upload files or add them manually</p>
+					<p>Upload files or add them manually, then fill in the count of each file and set if the file is input or output of project.</p>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-auto">
@@ -132,7 +131,8 @@
 			<div id="repository" class="shadow p-3 mb-5 bg-white rounded">
 				<h3>4. Repository</h3>				
 				<form id="formRepository" class="form-horizontal collapse hide">
-					<p>Please select a country</p>
+					<p>A selection of repositories will be created from the chosen location and the 3 most common output file categories given in the last step.</p>
+					<p>Please select a country:</p>
 					<div class="form-group row no-r-gutter">
 						<div class="col-md-auto">
 							<select id="countrySelector" class="selectpicker countrypicker" data-default="Austria"></select>
@@ -158,7 +158,7 @@
 			<div id="license" class="shadow p-3 mb-5 bg-white rounded">
 				<h3>5. License</h3>
 				<form id="formLicense"  class="form-horizontal collapse hide">
-					<p>Select a license for you project</p>
+					<p>Select a license for you project:</p>
 					<div class="form-group">
 						<div class="row no-r-gutter">
 							<div class="col-md-8">
@@ -200,7 +200,7 @@
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="selectName">TISS has multiple records (only first 15 are shown).\nPlease choose:</label>
+								<label for="selectName">TISS has multiple records (only first 15 are shown). Please choose:</label>
 								<select class="form-control" id="selectName"></select>
 							</div> 
 						</div>
