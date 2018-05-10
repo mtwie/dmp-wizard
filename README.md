@@ -1,4 +1,5 @@
 # DMP - Wizard
+[![DOI](https://zenodo.org/badge/130723036.svg)](https://zenodo.org/badge/latestdoi/130723036)
 
 Simple data management plan creation (digital-prevervation exercise)
 
